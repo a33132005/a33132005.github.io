@@ -1,10 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
 <head>
     <meta charset="UTF-8">
     <title>123</title>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
 </head>
 <body>
-<h1>hi</h1>
+<style>
+    .cd {
+        border:1px solid #C0C0C0;
+        border-collapse:collapse;
+        padding:5px;
+    }
+    .cd th {
+        border:1px solid #C0C0C0;
+        padding:5px;
+        background:#F0F0F0;
+        width:175px
+    }
+    .cd td {
+        border:1px solid #C0C0C0;
+        padding:5px;
+        width:175px
+    }
+
+</style>
+<div style="height:auto;width:500px;">
+    <table class="cd">
+        <caption>CD</caption>
+        <tbody>	<tr>
+        <tbody>
+        <tr>
+            <td>裝填</td>
+            <td id="b_reload" contenteditable="true">0</td>
+        </tr>
+        <tr>
+            <td>BUFF</td>
+            <td id="s_reload" contenteditable="true">0</td>
+        </tr>
+        <tr>
+            <td>裝備、貓、科技</td>
+            <td id="e_reload" contenteditable="true">0</td>
+        </tr>
+        <tr>
+            <td>射速加成</td>
+            <td id="sp_reload" contenteditable="true">0</td>
+        </tr>
+
+
+    </table>
+
+    <div>
+        <button type="button" onclick="cal()">click</button>
+    </div>
+
+
+
+    <div id="wname" style="background-color:#FFFFFF;height:auto;width:300px;float:left;">
+        <div id="w_p" style="background-color:#FFFFFF;height:auto;width:40px;float:left;padding:1px;">
+        </div>
+        <p id="w_text"></p>
+
+    </div>
+    <div id="wre" style="background-color:#FFFFFF;height:auto;width:150px;float:left;">
+        <p id="o_text"></p>
+    </div>
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+
+    var wep_info={
+        "wep":[
+            {
+                "name": "410mm連裝砲",
+                "r": 20.02,
+                "img":"https://patchwiki.biligame.com/images/blhx/0/0b/3nfyiiksu8ct10i8tcvh42c2fzpkrop.jpg"
+            },
+            {
+                "name": "406mm主砲MK6T3",
+                "r": 24.02,
+                "img":"https://patchwiki.biligame.com/images/blhx/5/57/lgbv7uip8s195gledsiqdsh5apey1tw.jpg"
+            },
+            {
+                "name": "三聯裝381mm主炮Model1934T3",
+                "r": 24.02,
+                "img":"https://patchwiki.biligame.com/images/blhx/d/d4/kcaus6ab5mxr3ojj5i58wjil9ibh9pg.jpg"
+            },
+            {
+                "name": "三聯裝406mm主炮T3",
+                "r": 24.02,
+                "img":"https://patchwiki.biligame.com/images/blhx/6/60/10h754dadjhmm2enavelqtfo0wtbte9.jpg"
+            },
+            {
+                "name": "雙聯裝381mm主炮.改T0",
+                "r": 17.96,
+                "img":"https://patchwiki.biligame.com/images/blhx/5/5d/3ffllyodcypxcjlrmm3cfotzdvihi2f.jpg"
+            },
+            {
+                "name": "四聯裝356mm主炮T3",
+                "r": 29.19,
+                "img":"https://patchwiki.biligame.com/images/blhx/a/a0/4xwysaqeg7z5z0g2va1wu128stxw4h5.jpg"
+            },
+            {
+                "name": "四聯裝380mm主炮Mle1935T3",
+                "r": 25.8,
+                "img":"https://patchwiki.biligame.com/images/blhx/4/49/hmkb2v0ajrye0cwrdmgie0zt1fb1ymr.jpg"
+            },
+            {
+                "name": "試作型410mm三連裝炮T0",
+                "r": 24.14,
+                "img":"https://patchwiki.biligame.com/images/blhx/c/cc/61ppdne2fb9o6q20apu142ipv1q6fj0.jpg"
+            },
+            {
+                "name": "試作型三聯裝381mm主炮T0",
+                "r": 23.14,
+                "img":"https://patchwiki.biligame.com/images/blhx/b/b4/7ytd83aj4s65fquehok4r7d8txvgi9c.jpg"
+            },
+            {
+                "name": "試作型雙聯裝406mmSKC主炮T0",
+                "r": 19.42,
+                "img":"https://patchwiki.biligame.com/images/blhx/1/14/j78ril088s6rdflql9sm21asdjioykx.jpg"
+            },
+            {
+                "name": "試作型雙聯裝457mm主炮MKAT0",
+                "r": 20.65,
+                "img":"https://patchwiki.biligame.com/images/blhx/f/fd/n5r46jzf8y0f641qckay8465obpyfxv.jpg"
+            }
+
+        ]
+    };
+
+    function cal() {
+        document.getElementById("w_text").innerHTML="";
+        document.getElementById("o_text").innerHTML="";
+        document.getElementById("w_p").innerHTML="";
+        var a = parseInt(document.getElementById("b_reload").innerHTML,10);
+        var b = parseInt(document.getElementById("s_reload").innerHTML,10);
+        var c =parseInt(document.getElementById("e_reload").innerHTML,10);
+        var d =parseInt(document.getElementById("sp_reload").innerHTML,10);
+
+        var tm=wep_info.wep;
+        var fcd;
+        for(var i=0;i<wep_info.wep.length;i++){
+            document.getElementById("w_text").innerHTML+=tm[i].name +"<br>"+"<br>";
+
+            var t1=tm[i].r;
+            var t2=parseFloat(t1);
+            var buff=1+(b/100);
+            var sk = 1-(d/100);
+            fcd =(t2*math.sqrt(200/((a+c)*buff+100)))*sk;
+            document.getElementById("o_text").innerHTML+=math.round(fcd,4)+"秒"+"<br>"+"<br>";
+
+
+            var  img=document.createElement("img");
+            img.src=tm[i].img;
+            img.width="30";
+            img.height="35";
+            var imgdiv=document.getElementById("w_p");
+            imgdiv.appendChild(img);
+            imgdiv.innerHTML+="<br>"
+
+        }
+
+
+
+    }
+
+
+</script>
 </body>
 </html>
