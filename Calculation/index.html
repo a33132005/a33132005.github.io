@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>123</title>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <style>
@@ -25,7 +26,7 @@
     }
 
 </style>
-<div style="height:auto;width:500px;">
+<div style="height:auto;width:500px;float:left;">
     <table class="cd">
         <caption>CD</caption>
         <tbody>	<tr>
@@ -68,6 +69,49 @@
 
 </div>
 
+
+
+
+<div style="height:auto;width:500px;float:left;">
+   <select id ="ls" ></select>
+    <table class="cd">
+        <caption>CD</caption>
+        <tbody>	<tr>
+        <tbody>
+    <tr>
+        <td>裝填</td>
+        <td id="re_a" contenteditable="true">0</td>
+        <td>裝備</td>
+        <td id="re_e" contenteditable="true">0</td>
+
+    </tr>
+        <tr>
+            <td>艦1</td>
+            <td id="A1" contenteditable="true">0</td>
+            <!--<td id="A1_cd" contenteditable="true">0</td>-->
+            <td ><select id="a1-w"><option></option></select></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td id="A2" contenteditable="true">0</td>
+            <!--<td id="A2_cd" contenteditable="true">0</td>-->
+            <td ><select id="a2-w"><option></option></select></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td id="A3" contenteditable="true">0</td>
+            <!--<td id="A3_cd" contenteditable="true">0</td>-->
+            <td><select id="a3-w"><option></option></select></td>
+        </tr>
+
+
+
+
+
+    </table>
+    <button type="button" id="btn1">click</button>
+    <p id ="label1"></p>
+</div>
 
 
 
@@ -170,8 +214,676 @@
 
 
 
+
+
     }
 
+
+</script>
+
+<script type="text/javascript" >
+    var kanlist=
+        [
+            {
+                "name": "長島",
+                "one": 3,
+                "two": 3,
+                "three": 0,
+                "value":0
+            },
+            {
+                "name": "柏格",
+                "one": 3,
+                "two": 3,
+                "three": 0 ,
+                "value":1
+            },
+            {
+                "name": "蘭利",
+                "one": 3,
+                "two": 3,
+                "three": 2 ,
+                "value":2
+            },
+            {
+                "name": "列克星敦",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+            "value":3
+            },
+            {
+                "name": "薩拉托加",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":4
+
+            },
+            {
+                "name": "突擊者",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":5
+
+            },
+            {
+                "name": "約克鎮",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":6
+            },
+            {
+                "name": "企業",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":7
+
+            },
+            {
+                "name": "大黃蜂",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":8
+            },
+            {
+                "name": "胡蜂",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":9
+            },
+            {
+                "name": "競技神",
+                "one": 3,
+                "two": 3,
+                "three": 0   ,
+                "value":10
+            },
+            {
+                "name": "獨角獸",
+                "one": 3,
+                "two": 3,
+                "three": 0 ,
+                "value":11
+            },
+            {
+                "name": "皇家方舟",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":12
+            },
+            {
+                "name": "光輝",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":13
+            },
+            {
+                "name": "勝利",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":14
+            },
+            {
+                "name": "可畏",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":15
+            },
+            {
+                "name": "光榮",
+                "one": 3,
+                "two": 2,
+                "three": 2,
+                "value":16
+            },
+            {
+                "name": "飛鷹",
+                "one": 2,
+                "two": 2,
+                "three": 3,
+                "value":17
+            },
+            {
+                "name": "隼鷹",
+                "one": 2,
+                "two": 2,
+                "three": 3,
+                "value":18
+            },
+            {
+                "name": "鳳翔",
+                "one": 0,
+                "two": 3,
+                "three": 3,
+                "value":19
+            },
+            {
+                "name": "祥鳳",
+                "one": 3,
+                "two": 3,
+                "three": 0,
+                "value":20
+            },
+            {
+                "name": "龍驤",
+                "one": 3,
+                "two": 3,
+                "three": 0,
+                "value":21
+            },
+            {
+                "name": "赤城",
+                "one": 3,
+                "two": 2,
+                "three": 3,
+                "value":22
+            },
+            {
+                "name": "加賀",
+                "one": 3,
+                "two": 2,
+                "three": 3,
+                "value":23
+            },
+            {
+                "name": "蒼龍",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":24
+            },
+            {
+                "name": "飛龍",
+                "one": 3,
+                "two": 2,
+                "three": 3,
+                "value":25
+            },
+            {
+                "name": "翔鶴",
+                "one": 2,
+                "two": 2,
+                "three": 4,
+                "value":26
+
+            },
+            {
+                "name": "瑞鶴",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":27
+            },
+            {
+                "name": "大鳳",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":28
+            },
+            {
+                "name": "齊柏林伯爵",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":29
+            },
+            {
+                "name": "半人馬",
+                "one": 2,
+                "two": 2,
+                "three": 4,
+                "value":30
+            },
+            {
+                "name": "埃塞克斯",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":31
+            },
+            {
+                "name": "追趕者",
+                "one": 3,
+                "two": 3,
+                "three": 0,
+                "value":32
+            },
+            {
+                "name": "獨立",
+                "one": 3,
+                "two": 3,
+                "three": 0,
+                "value":33
+            },
+            {
+                "name": "香格里拉",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":34
+            },
+            {
+                "name": "邦克山",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":35
+            },
+            {
+                "name": "小赤城",
+                "one": 3,
+                "two": 2,
+                "three": 3,
+                "value":36
+            },
+            {
+                "name": "小齊柏林",
+                "one": 3,
+                "two": 3,
+                "three": 2,
+                "value":37
+            },
+            {
+                "name": "巴丹",
+                "one": 3,
+                "two": 3,
+                "three": 0,
+                "value":38
+            },
+            {
+              "name":"龍鳳",
+              "one":3,
+                "two":3,
+               "three":0,
+                "value":39
+            },
+            {
+                "name":"無畏",
+                "one":3,
+                "two":3,
+                "three":2,
+                "value":40
+            },
+            {
+                "name":"卡薩布蘭卡",
+                "one":3,
+                "two":3,
+                "three":1,
+                "value":41
+            },
+            {
+                "name":"貝亞恩",
+                "one":3,
+                "two":3,
+                "three":2,
+                "value":42
+            },
+            {
+                "name":"小光輝",
+                "one":3,
+                "two":3,
+                "three":2,
+                "value":43
+            },
+            {
+                "name": "貝露",
+                "one": 3,
+                "two": 2,
+                "three": 2,
+                "value":44
+            },
+            {
+                "name": "翡綠之心",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":45
+            },
+            {
+                "name": "烏璐露",
+                "one": 3,
+                "two": 3,
+                "three": 0,
+                "value":46
+            },
+            {
+                "name": "薩拉娜",
+                "one": 3,
+                "two": 3,
+                "three": 0,
+                "value":47
+            },
+            {
+                "name": "芙米露露",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":48
+            },
+            {
+                "name": "絆愛·Anniversary",
+                "one": 2,
+                "two": 3,
+                "three": 3,
+                "value":49
+            },
+            {
+                "name": "赤城(μ兵裝)",
+                "one": 3,
+                "two": 2,
+                "three": 3,
+                "value":50
+            },
+            {
+                "name":"時乃空",
+                "one":2,
+                "two":3,
+                "three":3,
+                "value":51
+            },
+            {
+                "name":"紫咲詩音",
+                "one":3,
+                "two":3,
+                "three":0,
+                "value":52
+            },
+            {
+                "name":"大神澪",
+                "one":3,
+                "two":2,
+                "three":3,
+                "value":53
+            }
+
+        ];
+
+
+    var cba={
+        "戰鬥機": [
+            {
+                "name": "XF5F天箭T0",
+                "cd": 8.98
+            },
+            {
+                "name": "F2A水牛(薩奇隊)T0",
+                "cd": 9.44
+            },
+            {
+                "name": "F4U（VF-17“海盜”中隊）T0",
+                "cd": 10.2
+            },
+            {
+                "name": "F6F地獄貓T3",
+                "cd": 10.9
+            },
+            {
+                "name": "Me-155A艦載戰鬥機T3",
+                "cd": 9.24
+            },
+            {
+                "name": "海怒T0",
+                "cd": 10.61
+            },
+            {
+                "name": "海毒牙T3",
+                "cd": 10.6
+            },
+            {
+                "name": "烈風T3",
+                "cd": 10.44
+            },
+            {
+                "name": "零戰五二型T3",
+                "cd": 9.52
+            }
+        ],
+        "轟炸機": [
+            {
+                "name": "SB2C地獄俯衝者T3",
+                "cd": 11.88
+            },
+            {
+                "name": "Ju-87C俯衝轟炸機T3",
+                "cd": 11.57
+            },
+            {
+                "name": "BTD-1毀滅者T3",
+                "cd": 11.71
+            },
+            {
+                "name": "SBD無畏(麥克拉斯基隊)T0",
+                "cd": 11.71
+            },
+            {
+                "name": "彗星T3",
+                "cd": 10.44
+            },
+            {
+                "name": "梭魚(831中隊)T0",
+                "cd": 10.38
+            },
+            {
+                "name": "螢火蟲T0",
+                "cd": 11.11
+            }
+        ],
+        "魚雷機": [
+            {
+                "name": "天山T3",
+                "cd": 11.63
+            },
+            {
+                "name": "流星T2",
+                "cd": 11.37
+            },
+            {
+                "name": "青花魚T3",
+                "cd": 9.98
+            },
+            {
+                "name": "TBD蹂躪者(VT-8中隊)T0",
+                "cd": 12.04
+            },
+            {
+                "name": "TBM復仇者(VT-18中隊)T0",
+                "cd": 12.04
+            },
+            {
+                "name": "劍魚(818中隊)T0",
+                "cd": 10.97
+            },
+            {
+                "name": "梭魚T3",
+                "cd": 10.31
+            },
+            {
+                "name": "流星T3",
+                "cd": 11.37
+            },
+            {
+                "name": "火把T0",
+                "cd": 11.64
+            }
+        ]
+    };
+
+
+    $(function(){
+        kanlist.map(function(data){
+
+            $('#ls').append('<option value="'+ data.value +'">' + data.name + '</option>');
+
+
+
+        });
+        $('#a1-w').append('<option>' + "戰鬥機:" + '</option>');
+        $('#a2-w').append('<option>' + "戰鬥機:" + '</option>');
+        $('#a3-w').append('<option>' + "戰鬥機:" + '</option>');
+        cba.戰鬥機.map (function (data) {
+            $('#a1-w').append('<option>' + data.name + '</option>');
+            $('#a2-w').append('<option>' + data.name + '</option>');
+            $('#a3-w').append('<option>' + data.name + '</option>');
+        });
+        $('#a1-w').append('<option>' + "轟炸機:" + '</option>');
+        $('#a2-w').append('<option>' + "轟炸機:" + '</option>');
+        $('#a3-w').append('<option>' + "轟炸機:" + '</option>');
+        cba.轟炸機.map (function (data) {
+            $('#a1-w').append('<option>' + data.name + '</option>');
+            $('#a2-w').append('<option>' + data.name + '</option>');
+            $('#a3-w').append('<option>' + data.name + '</option>');
+        });
+        $('#a1-w').append('<option>' + "魚雷機:" + '</option>');
+        $('#a2-w').append('<option>' + "魚雷機:" + '</option>');
+        $('#a3-w').append('<option>' + "魚雷機:" + '</option>');
+        cba.魚雷機.map (function (data) {
+            $('#a1-w').append('<option>' + data.name + '</option>');
+            $('#a2-w').append('<option>' + data.name + '</option>');
+            $('#a3-w').append('<option>' + data.name + '</option>');
+        })
+    });
+
+
+
+
+    $('#ls').change(function () {
+        var kl=kanlist;
+        $("#A1").text( kl[$("#ls").val()].one);
+        $("#A2").text( kl[$("#ls").val()].two);
+        $("#A3").text( kl[$("#ls").val()].three);
+
+    });
+
+
+
+    $(function  () {
+        var fcd1;
+        var fcd2;
+        var fcd3;
+
+        $.fn.geta1=(function  () {
+            var txt=$("#a1-w :selected").text();
+            var t1=cba.戰鬥機;
+            var t2=cba.轟炸機;
+            var t3=cba.魚雷機;
+
+            var a=parseFloat(document.getElementById('re_a').innerText);
+            var e=parseFloat(document.getElementById('re_e').innerText);
+            for(var i=0;i<t1.length;i++){
+                if (t1[i].name==txt){
+                    fcd1 =math.round((parseFloat(t1[i].cd)*math.sqrt(200/((a+e)+100))),2);
+                    //         document.getElementById("A1_cd").innerHTML = fcd;
+                }
+            }
+            for(var i=0;i<t2.length;i++){
+                if (t2[i].name==txt){
+                    fcd1 =math.round((parseFloat(t2[i].cd)*math.sqrt(200/((a+e)+100))),2);
+                    //        document.getElementById("A1_cd").innerHTML = fcd;
+                }
+            }
+            for(var i=0;i<t3.length;i++){
+                if (t3[i].name==txt){
+                    fcd1 =math.round((parseFloat(t3[i].cd)*math.sqrt(200/((a+e)+100))),2);
+//                document.getElementById("A1_cd").innerHTML = fcd;
+                }
+            }
+
+        });
+        $.fn.geta2=(function () {
+            var txt=$("#a2-w :selected").text();
+            var t1=cba.戰鬥機;
+            var t2=cba.轟炸機;
+            var t3=cba.魚雷機;
+
+            var a=parseFloat(document.getElementById('re_a').innerText);
+            var e=parseFloat(document.getElementById('re_e').innerText);
+            for(var i=0;i<t1.length;i++){
+                if (t1[i].name==txt){
+                    fcd2 =math.round((parseFloat(t1[i].cd)*math.sqrt(200/((a+e)+100))),2);
+//                document.getElementById("A2_cd").innerHTML = fcd;
+                }
+            }
+            for(var i=0;i<t2.length;i++){
+                if (t2[i].name==txt){
+                    fcd2 =math.round((parseFloat(t2[i].cd)*math.sqrt(200/((a+e)+100))),2);
+//                document.getElementById("A2_cd").innerHTML = fcd;
+                }
+            }
+            for(var i=0;i<t3.length;i++){
+                if (t3[i].name==txt){
+                    fcd2 =math.round((parseFloat(t3[i].cd)*math.sqrt(200/((a+e)+100))),2);
+//                document.getElementById("A2_cd").innerHTML = fcd;
+                }
+            }
+
+        });
+        $.fn.geta3=(function () {
+            var txt=$("#a3-w :selected").text();
+            var t1=cba.戰鬥機;
+            var t2=cba.轟炸機;
+            var t3=cba.魚雷機;
+            var a=parseFloat(document.getElementById('re_a').innerText);
+            var e=parseFloat(document.getElementById('re_e').innerText);
+
+            for(var i=0;i<t1.length;i++){
+                if (t1[i].name==txt){
+                    fcd3 =math.round((parseFloat(t1[i].cd)*math.sqrt(200/((a+e)+100))),2);
+//                document.getElementById("A3_cd").innerHTML = fcd;
+                }
+            }
+            for(var i=0;i<t2.length;i++){
+                if (t2[i].name==txt){
+                    fcd3 =math.round((parseFloat(t2[i].cd)*math.sqrt(200/((a+e)+100))),2);
+//                document.getElementById("A3_cd").innerHTML = fcd;
+                }
+            }
+            for(var i=0;i<t3.length;i++){
+                if (t3[i].name==txt){
+                    fcd3 =math.round((parseFloat(t3[i].cd)*math.sqrt(200/((a+e)+100))),2);
+//                document.getElementById("A3_cd").innerHTML = fcd;
+                }
+            }
+
+
+
+        });
+        $("#btn1").click(function() {
+            $.fn.geta1();
+            $.fn.geta2();
+            $.fn.geta3();
+            var a1 = parseInt(document.getElementById("A1").innerHTML);
+            var a2 = parseInt(document.getElementById("A2").innerHTML);
+            var a3 = parseInt(document.getElementById("A3").innerHTML);
+
+
+            var cd =(a1 * fcd1 + a2 * fcd2 + a3 * fcd3) * 2.2 / (a1 + a2 + a3) + 0.1;
+            document.getElementById("label1").innerHTML = cd;
+        });
+
+
+    });
+
+    $('#a1-w').change(function () {
+        $.fn.geta1();
+
+    });
+    $('#a2-w').change(function () {
+        $.fn.geta2();
+    });
+    $('#a3-w').change(function () {
+        $.fn.geta3();
+    });
 
 </script>
 </body>
