@@ -2,10 +2,52 @@
 <html lang="zh-tw">
 <head>
     <meta charset="UTF-8">
-    <title>123</title>
+    <title>CD計算機</title>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+<!--YY2uLvu1uJuJuJjJ1jUuUj2u1jUuuJ1JujuJ2di   .   .rrvr7Lrvrrr7rvrrr7r7rr77r777r7r7r7v7rri7r7r7r7r: ......rvjvrvJvsJuj1uuYuv
+gRQQgRgBBBBBBBBBQBQBBBBBBBBBBBBBBBBBQB       :sIIquSXU52U21U5P222ISK1UUI1X5UU5UI15XXISII1I2I2SUr......iBBBQBQQRQMRRQQQQQ
+MEMQBQgMQBBQBBBBBQQggZMRBQBQQQBBBBBBBB. .:r72KK55KSUqKK12121IqE5IU25PSIUIUPS2252IUI2PqKXqXKSXKPbKi:::r:.QBBQBQQRRZDgRMQR
+QgMBQQgDDQBBBBQQMgggDMQBQQMQQBQBQBBBBBs  .7S552SUKXUuPSUU51U12PbSI112d55UUUPKSISSX5S2KXKKqIXSKXPPD7:::biiBBQQQgZgQEgDdDQ
+BQBBBQQDgMBQQDggggQRBQQQQRQQBBB1EBBBBS.    rS1I2qKd2KPq2KKP5UjPKqqP2jXgbKIIuSKSUI5XXKIKXK5S2IIS5PdgL:.rBYDBQQRZSPKbgMbDD
+BBRQQBQBQQMMgggRMQRBQBQBQBQQQBBK  .:   ..:r1UII5IdgMMRE5qKSEXIIK5ZQg2IKKXKXq5qdb511212uU2XSK5SIXXP5di:.gBBBBQQgPXXXdbZgR
+BRQgQQBQRgQQQQQQQBBBBRQRQMMgRMQQQ:    ...:5SIIIXIP1:7YPPEEZPDS2qDQgXKPPq55qXKSqPES2u25ISPqdPbKXXqPj7r:.PBBBQBQMPbPPPbKgD
+ZgMQRQRRZQQBBQQBBQQQgZbZEggQQBQBBBM7:. ..su2USUSSPi    iXvrvuPKBQgSPdRBBRBdXSXSXXPdXSEPPqbPPqPSKKdEr::.dBBQQQQDZMQgRgDPK
+RMRZbZgZMQBBBQBQQDRgMggDRMQQQQQQBQBR .: :irIIXXjPb7 ::  7. :7ZgPPgQEP1:iBEqXqXXSKSPPbPqPEqdPqPqXPqgU:.:QBQQRQMZbBQQQBQgd
+RQQRZMgZPZdEEZDgbEEMQBQQRQQBQBQBQBB .K .. vdIIqX1u:  : ...LgqqZd7rii   :rvuPPPXKSX5bZbKPbPKDPbPqqdgS..PBBBQQgRRBQQMQQBQQ
+QQQRRgRDEPX1JY1IS222ERQQQRQQBQBBBBE.B7 .. sXKUSqPKYi:. .:rqi. Yg  :KU:.    .:vqKqSqPDXKXdPqqZPZPPbgr.UBQBBQRQMBBBQBQRgEb
+QQQQggqPPDPqPZZMEZbquUPDDgDQQBQBQBQBBX  . :qqXqS.:1dZq. .i: . iY:ii7r: ...    1bXKXZPKKZPPbEPbbbPZ5:IBQDU2QQMQQBBBQMqbs2
+QgRQQMgPDEPPEgQQBRQQRDgZPSPgBQBQBQBBBBj : :XbSdr.Yj1XEgi .::... .     ....... 2PqXPqPKPPdbbPdddPbb5ii:..rqQMRQBQBBQQRZ1v
+RggQQQQBBBQBQBQBQBQBQBQBdXqggQQQRQBBBBBX :7qXI2PYM  K:.r ... .................UdKPqPqPqKqdPbKPKPPgvirLjdRQgMgQQQBBQBQBQQ
+QMQQQQBQBBBQBQBQBQBQBQBQBMgZggQRQQR5Li.  .uXU2IKY :SI: ...  ..................SPPKPKPKdbdPdKqXPPEKXiiUQEgEqbRMQQBBBBBQBQ
+QBQBQBBBQBQQQBQQQQQBQQQBQBQQgDRQRBQPvii5b:PbuXu2u  :  .:.      ...............XbqPqPqPPgdPPqSqKdDr:Y: :EPKjPgQMQQBQBBBQQ
+RRBQBBBQBQQQBQBQQQBQQQQQBMMgRRQgMgRQBBBBB.EQuK2Y5.  . :i:rsLs7i...............PPPKPPbPDbP5KKqKPbg7.XBq.iQDEbggggQQBQBBBM
+gQQBQBQBQQQBQBQQQBQQMQMRgDZRgRRMgRMBBBBBBj1BgZQPS7 ....JbQQQgL......... ::.. ibbqPqPPbEEPq5qXPqEEI.7BBB2RBQQRQRQQQQQQBQZ
+gDQQQgRQQQBQQQBQQQQQBRgZMgMgRMQDggMQBQQMQBQQBQBBBB. ... i7KX: ........ iI... rDqPKbPbPDbEPqKqPdPZEr EBBBBBBQQQBQBQQQQQQZ
+qPgBDZgQQQQQQBQQQBQQQBRRRRgRgRZZPZZgRQEKPMQQQRQBQBK  ...  .. ....... .vgi... JbPqPPbqPEEbZdZqPPbPgEr:QBBQBQBQQQQQBQBQBQg
+qKQQEDQQQQQQBQBQQQBQQQQRQMQDDDMggEgDMgQDP1bgRZRQQMBv  ...::...  ..irvSBK.....KbPPPdPqbDbEPEDbqEKEquSv:PQBBBQBQBQBQBQBBBQ
+ZMQdqRRBQBQQQBQQQQQQRQRQQQMQMQQQQQQQQQQBQddEKXPgMQQBr  ....rirqRBBBBBBBY .. rZqbPdbdbDEEbdPgqdbPPdj::::..rKBBBQQQBBBBBBB
+gKP5bRQQQQBQQQBQQQQRRRQRQRQRBQQQQQBQQRBQQZDbqqdqEdQBBL  ....dBBBPJv7vv2.... IdEqPPbdDPEbdPZbPZEPbPgP7:7SQQBBBBBRQQBQBBBB
+PJJKZQQBQQRQQQQQQQQQMQMQMQRQQBQBQBQQQQQQQBQQggZDDQQBQBZ   .  uYL:rrri::....:bPPdPdEdPgEdPEDddZPdPEdggS:.YBBBBBQQgggQQBBB
+U7uqQQQRQRQQQQQQQQBQBQQQQgQQBQBBBBQQQQQQQQQQBQQDgRBQBQBBi  . .::i:i:.......sDqbdZbdPDddEgZZdEbgbPPdbgq2r. jQBBBQQZDgRMQQ
+Y7uZQQgRRQQQRQRQQBQQBBQBRQQBBBBBBBBBRQQQMQQBQBBBQBBQMQQBBX   .:.......::..:dPbZEPdPDZbdDZZEEdZZRRQgQRgv7ri :QBQQRMDggMMQ
+2i7gBQQRQQQQQQBQQQQQBQQQBBBBBBQKbBBBQQQQQQQQQQBBBBBgDRBBBBB.  ..::::iuv.. vDgEdPbPbEDbdPddZEDEEDgEgZgQBd:Xd..ZQRQRQQQQBQ
+v.iQBBQQRBQQQBQBQBQBQBBBBBMJ:.   iBBBBBBBBQBBBBBQBggZQQBBBBBr  :LgDbUi.. .PgbPqbPEdZdEdEbEdZEgEDEdqEZQBq.iBBJuBQQBQBQQQQ
+7.JBBQQRBggDMggbgQBQBBBQRj    :   MBBQQddPPPdZBBBgDMBBBBBQBBB:   .:.   .rXgbbPEPEdDbZdZdZdDEZEZdgDgRQgQK:.SBBBBBBBBQQQQQ
+7:uBBBQBQMgDbPIdQBQQgDPZE1  .   rSPBQD5I1I5S25UEBBQBQBQBQBBBBB.      :LEgDPdPdPEbZEdbEdZEDdEEDgRMQggEZZMr.iBBBQBgMQBQQQB
+v.2BBQBBBBBQQPqZDddPdPgU77:...rXbSIQM2KSKXKXPPdRBBBQBQRQQQBBBBBg5YLvPgMEdPdbEddPbPdPZEDEggMgRMgZZPdPddggs.:gBBBQRDQQQgQQ
+7.IBQBBQgBQBEPbdKPPPPb:      vPgSX5bSXXPqqbQQBBBQBBBRRRBBBQQMRZRMQMDDDPbPEPdbZbZEggMgQMRgMEDEdPPPbPEEDZR1..QBBRRgQQQMQMQ
+5vZQBgEZbZQRgEPPPqDEQj     .KgbPqXPPKqPPPgBQBQBQBQBQDEBdKQZS5UUUSSEPDbbPEPEEgDRMMggZDdZPPqdPPPdPdPEdEEgR2 :QBQQgQQQQQQQQ
+21DQQgXI5dgEqPPEdgDDv... .rqEPPPXqSEdbqdZBQBBBBBQgPgRBQb rZEPq5S5XKZZZPddgDRggdEPbPdPdPEPbbEbEdEbEdZdDEgZPPBBBQBBBQBBBRQ
+JsdPgPSjUPESPKbdQDDv    :2DXK5PXSIDQBQEPgMQgQMgQDU1SRQBB5 .SgEMEbXqPDbZZMgDPPqdPEPdbEPEEDbEdEPEPdPZdEEDDgMggQgQQBBBBBQMQ
+2UI525U25EqqqdPZr  ..  rZDPKSXqbDQBBBBMXPd22dgPq2IUUKdKKZJ  vPPEgZXKPgggPbPPqbPdbgbZbZEDdDdddEPEPddZdgDgEZEEdZZRQQQBQBRB
+P22uIUI1dbPPEPg:     .vKbPXS5qQBBQQQBE5u2U2uS5I122XU2UI1PS.:.udEDMZXZggPPZEbdbZbZMZdEEDDZEDbEddPZEDZgZDdEPdPEPPqPKqKPKdP
+52II2U1qdPKbbgZ: ..:.XdqPqI52gBBQQQBqsuIUI2IU52SIS5X2S5Kb7riLr.MBRMgggqEbZdZbddDdgbEbEPEdZbEdDEDZDZDdEPdbEPEbdPdPbPbPPPP
+IuIUIuqdbKPqZj.i   iPEqXqUqKMQBQBQBDYJUu2U5U55K5KXKSqPdD7 : 7. 7PdQQMqPdPdZPdPEbEdbbEdEEDZgDDZgEDZDZZdZEZZDEZdDdEEDEEEEP
+2UUUuqddqbPdES   .sbPX1SDQQBBQQQQBQPYSPdbdqPqPPEDEPbq5Ji . .:. : .dBEPqdqEbEbdPbPEPZdggMRQgQMRDRDRgMgggRRQRRgggggQRQRQDE
+5jIUqZbqPqbbbDu :SPddKEMBQBQBQQQBQQEPDQQBQBQduYr::..    .:i...... rUEEEPbPdPdPdbEdZdZgUiEr:1::g1br:7v1rrrirL7iXs2L.7r.IM
+IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPbqPPdPgj7ULrKJrPugv7qL2jv77sjYvULIJ:uLrKR-->
 <body>
 <style>
     .cd {
@@ -121,7 +163,7 @@
         <tbody>
     <tr>
         <td>面板裝填</td>
-        <td id="re_a" contenteditable="true">0</td>
+        <td id="re_a" contenteditable="true">100</td>
 
 
     </tr>
@@ -173,7 +215,7 @@
 </div>
 <div>
     <table class="cd" > <!--可畏-->
-        <caption>空襲CD</caption>
+        <caption>可畏CD計算機</caption>
         <tbody>
         <tr>
             <td>面板裝填</td>
@@ -265,6 +307,7 @@
     };
 
     function cal() {
+        //
         document.getElementById("w_text").innerHTML="";
         document.getElementById("o_text").innerHTML="";
         document.getElementById("w_p").innerHTML="";
@@ -275,6 +318,7 @@
 
         var tm=wep_info.wep;
         var fcd;
+        //
         for(var i=0;i<wep_info.wep.length;i++){
             document.getElementById("w_text").innerHTML+=tm[i].name +"<br>"+"<br>";
 
@@ -282,7 +326,7 @@
             var t2=parseFloat(t1);
             var buff=1+(b/100);
             var sk =document.getElementById('sk_equip');
-
+            //判斷金火控是否啟用
             if(sk.checked){
                 fcd =(t2*math.sqrt(200/((a+c)*buff+100)))*0.85;
             }else {
@@ -291,7 +335,7 @@
 
             document.getElementById("o_text").innerHTML+=math.round(fcd,4)+"秒"+"<br>"+"<br>";
 
-
+            //添加圖片
             var  img=document.createElement("img");
             img.src=tm[i].img;
             img.width="30";
@@ -806,7 +850,7 @@
     };
 
 
-    $(function(){
+    $(function(){//將各類艦載機添加至下拉式選單
         kanlist.map(function(data){
 
             $('#ls').append('<option value="'+ data.value +'">' + data.name + '</option>');
@@ -842,7 +886,7 @@
 
 
 
-
+    //獲取艦載機數量
     $('#ls').change(function () {
         var kl=kanlist;
         $("#A1").text( kl[$("#ls").val()].one);
@@ -854,19 +898,19 @@
 
 
     $(function  () {
-        var fcd1=0;
-        var fcd2=0;
-        var fcd3=0;
+        var fcd1=0;//第一格CD
+        var fcd2=0;//第二格CD
+        var fcd3=0;//第三格CD
         var buff=1;
         $.fn.geta1=(function  () {
-            var txt=$("#a1-w :selected").text();
+            var txt=$("#a1-w :selected").text();//判斷第一格選擇的艦載機
             var t1=cba.戰鬥機;
             var t2=cba.轟炸機;
             var t3=cba.魚雷機;
-            buff=1+(parseFloat(document.getElementById('re_buff').innerText)/100);
-            var a=parseFloat(document.getElementById('re_a').innerText);
-            var e=parseFloat(document.getElementById('re_e').innerText);
-
+            buff=1+(parseFloat(document.getElementById('re_buff').innerText)/100);//buff值
+            var a=parseFloat(document.getElementById('re_a').innerText);//面板裝填
+            var e=parseFloat(document.getElementById('re_e').innerText);//額外裝填
+            //判斷選擇到的艦載機種類並計算CD
             for(var i=0;i<t1.length;i++){
                 if (t1[i].name==txt){
                     fcd1 =math.round((parseFloat(t1[i].cd)*math.sqrt(200/(((a+e)*buff)+100))),2);
@@ -947,7 +991,7 @@
 
         });
       $.fn.getcd=(function () {
-
+            //計算最終CD
           $.fn.geta1();
           $.fn.geta2();
           $.fn.geta3();
@@ -955,7 +999,7 @@
           var a2 = parseInt(document.getElementById("A2").innerHTML);
           var a3 = parseInt(document.getElementById("A3").innerHTML);
           var a4 =parseFloat(document.getElementById("re_time").innerText)/100;
-          if (a4==0){
+          if (a4==0){//是否有時間縮短
               a4=1;
           }
 
@@ -1011,6 +1055,7 @@
        var t2t;
        var t1t;
        var cda ;
+       //製作表格
            var table=$("<table></table>");
            var thead=$("<thead></thead>");
            var tbody=$("<tbody></tbody>");
