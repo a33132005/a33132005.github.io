@@ -132,7 +132,7 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
 
     <div>
-        <button type="button" onclick="cal()">click</button>
+        <button type="button" onclick="cal()">計算</button>
     </div>
 
 
@@ -187,13 +187,13 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
     </tr>
         <tr>
             <td>艦載機1</td>
-            <td id="A1" contenteditable="true">0</td>
+            <td id="A1" contenteditable="true">3</td>
             <!--<td id="A1_cd" contenteditable="true">0</td>-->
             <td ><select id="a1-w"><option>選擇艦載機</option></select></td>
         </tr>
         <tr>
             <td>艦載機2</td>
-            <td id="A2" contenteditable="true">0</td>
+            <td id="A2" contenteditable="true">3</td>
             <!--<td id="A2_cd" contenteditable="true">0</td>-->
             <td ><select id="a2-w"><option>選擇艦載機</option></select></td>
         </tr>
@@ -209,7 +209,7 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
 
     </table>
-    <button type="button" id="btn1">click</button>
+    <button type="button" id="btn1">計算</button>
     <p id ="label1"></p>
     <p id ="label2"></p>
 </div>
@@ -233,7 +233,7 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
         </tr>
     </table>
 
-    <button type="button" id = "btn2">click</button>
+    <button type="button" id = "btn2">計算</button>
 </div>
 <div id="showTable" style="height:auto;width:auto;float:left;text-align:center;">
 
@@ -850,17 +850,19 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
     };
 
 
-    $(function(){//將各類艦載機添加至下拉式選單
-        kanlist.map(function(data){
+    $(function(){
 
+        kanlist.map(function(data){
             $('#ls').append('<option value="'+ data.value +'">' + data.name + '</option>');
 
 
 
         });
+        //將各類艦載機添加至下拉式選單
         $('#a1-w').append('<option>' + "戰鬥機:" + '</option>');
         $('#a2-w').append('<option>' + "戰鬥機:" + '</option>');
         $('#a3-w').append('<option>' + "戰鬥機:" + '</option>');
+
         cba.戰鬥機.map (function (data) {
             $('#a1-w').append('<option>' + data.name + '</option>');
             $('#a2-w').append('<option>' + data.name + '</option>');
