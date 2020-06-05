@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="cd.ico"/>
     <title>時間管理大師</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
     <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+    <link rel="stylesheet" href="jqueryui/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 </head>
 <!--YY2uLvu1uJuJuJjJ1jUuUj2u1jUuuJ1JujuJ2di   .   .rrvr7Lrvrrr7rvrrr7r7rr77r777r7r7r7v7rri7r7r7r7r: ......rvjvrvJvsJuj1uuYuv
 gRQQgRgBBBBBBBBBQBQBBBBBBBBBBBBBBBBBQB       :sIIquSXU52U21U5P222ISK1UUI1X5UU5UI15XXISII1I2I2SUr......iBBBQBQQRQMRRQQQQQ
@@ -133,20 +136,14 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
 
     <div>
-        <button type="button" onclick="cal()">計算</button>
+        <button type="button" id ="btn">計算</button>
     </div>
 
+    <div id="tb1" style="height:auto;width:auto;float:left;text-align:left;">
 
-
-    <div id="wname" style="background-color:#FFFFFF;height:auto;width:300px;float:left;">
-        <div id="w_p" style="background-color:#FFFFFF;height:auto;width:40px;float:left;padding:1px;">
-        </div>
-        <p id="w_text"></p>
 
     </div>
-    <div id="wre" style="background-color:#FFFFFF;height:auto;width:150px;float:left;">
-        <p id="o_text"></p>
-    </div>
+
 
 </div>
 
@@ -220,7 +217,7 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
         <tbody>
         <tr>
             <td>面板裝填</td>
-            <td id="re_f" contenteditable="true">100</td>
+            <td id="re_f" contenteditable="true">117</td>
 
 
         </tr>
@@ -236,6 +233,16 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
     <button type="button" id = "btn2">計算</button>
 </div>
+<div>
+    <label>
+        <input type="checkbox" name="" id="s_equip" class="checkbox">
+        <span class="btn-box">
+      <span class="btn"></span>
+    </span>
+        <span class="text">歸航信標</span>
+    </label>
+</div>
+
 <div id="showTable" style="height:auto;width:auto;float:left;text-align:center;">
 
 
@@ -306,52 +313,66 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
         ]
     };
+    $(function() {
+        $( "#accordion" ).accordion({
+            collapsible: true
+        });
+    });
 
-    function cal() {
-        //
-        document.getElementById("w_text").innerHTML="";
-        document.getElementById("o_text").innerHTML="";
-        document.getElementById("w_p").innerHTML="";
+    $('#btn').click(function () {
+       $('#tb1').text("");
+        var tm=wep_info.wep;
+        var table=$("<table ></table>");
+        var thead=$("<thead></thead>");
+        var tbody=$("<tbody></tbody>");
+        var div=$("<div id='accordion'></div>");
+
+        var p=$("<p>");
         var a = parseFloat(document.getElementById("b_reload").innerHTML,10);
-        var b = parseFloat(document.getElementById("s_reload").innerHTML,10);
+        var b = 1+(parseFloat(document.getElementById("s_reload").innerHTML,10)/100);
         var c =parseFloat(document.getElementById("e_reload").innerHTML,10);
 
+        var  img=document.createElement("img");
+        var sk =document.getElementById('sk_equip');
+        var  imgdiv=document.createElement("p");
 
-        var tm=wep_info.wep;
-        var fcd;
-        //
-        for(var i=0;i<wep_info.wep.length;i++){
-            document.getElementById("w_text").innerHTML+=tm[i].name +"<br>"+"<br>";
 
-            var t1=tm[i].r;
-            var t2=parseFloat(t1);
-            var buff=1+(b/100);
-            var sk =document.getElementById('sk_equip');
-            //判斷金火控是否啟用
-            if(sk.checked){
-                fcd =(t2*math.sqrt(200/((a+c)*buff+100)))*0.85;
-            }else {
-                fcd =(t2*math.sqrt(200/((a+c)*buff+100)));
-            }
+        for(var i=0;i<tm.length;i++){
+            var h3=$("<h3></h3>");
+            var tr=$("<tr></tr>");
+            var td=$("<td></td>");
+            var th=$('<th></th>');
 
-            document.getElementById("o_text").innerHTML+=math.round(fcd,4)+"秒"+"<br>"+"<br>";
-
-            //添加圖片
-            var  img=document.createElement("img");
             img.src=tm[i].img;
             img.width="30";
             img.height="35";
-            var imgdiv=document.getElementById("w_p");
             imgdiv.appendChild(img);
-            imgdiv.innerHTML+="<br>"
+            if(sk.checked ){
+                fcd =(tm[i].r*math.sqrt(200/((a+c)*b+100)))*0.85;
+            }else {
+                fcd =(tm[i].r*math.sqrt(200/((a+c)*b+100)));
+            }
+            th=$("<th>"+imgdiv.innerHTML+tm[i].name+"</th>");
+            td=$("<td>"+math.round(fcd,2)+"s/輪"+"</td>");
 
+
+            th.appendTo(tr);
+
+            td.appendTo(tr);
+
+
+
+
+
+
+
+            tr.appendTo(tbody);
+            tbody.appendTo(table);
+            thead.appendTo(table);
+            table.appendTo(tb1);
         }
+    })
 
-
-
-
-
-    }
 
 
 </script>
@@ -1050,7 +1071,7 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
        var a=parseFloat(document.getElementById('re_f').innerText);
        var e=parseFloat(document.getElementById('re_fe').innerText);
        var b=1+parseFloat(document.getElementById('re_fbuff').innerText)/100;
-       var cdf;
+       var ss=document.getElementById('s_equip');
        var t1=cba.戰鬥機;
        var t2=cba.轟炸機;
        var t3=cba.魚雷機;
@@ -1092,7 +1113,12 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
                        continue;
                    }
                    t2t =math.round((parseFloat(t3[j].cd)*math.sqrt(200/(((a+e)*b)+100))),2);
-                   cda=math.round((2* t1t + 3 * t2t + 3 * t3t) * 2.2 / (2 + 3 + 3) + 0.1,2);
+                   if (ss.checked){
+                       cda=math.round(((2* t1t + 3 * t2t + 3 * t3t) * 2.2 / (2 + 3 + 3) + 0.1)*0.96,2);
+                   }else{
+                       cda=math.round((2* t1t + 3 * t2t + 3 * t3t) * 2.2 / (2 + 3 + 3) + 0.1,2);
+                   }
+
                   td =$("<td>"+cda+"</td>");
                    td.appendTo(tr);
                }
@@ -1122,7 +1148,13 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
                    continue;
                }
                t2t =math.round((parseFloat(t3[j].cd)*math.sqrt(200/(((a+e)*b)+100))),2);
-               cda=math.round((2* t1t + 3 * t2t + 3 * t3t) * 2.2 / (2 + 3 + 3) + 0.1,2);
+
+               if (ss.checked){
+                   cda=math.round(((2* t1t + 3 * t2t + 3 * t3t) * 2.2 / (2 + 3 + 3) + 0.1)*0.96,2);
+               }else{
+                   cda=math.round((2* t1t + 3 * t2t + 3 * t3t) * 2.2 / (2 + 3 + 3) + 0.1,2);
+               }
+
                td =$("<td>"+cda+"</td>");
                td.appendTo(tr);
            }
