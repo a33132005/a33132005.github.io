@@ -115,7 +115,7 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
             <td id="b_reload" contenteditable="true">100</td>
         </tr>
         <tr>
-            <td>BUFF(%)</td>
+            <td>BUFF</td>
             <td id="s_reload" contenteditable="true">0</td>
         </tr>
         <tr>
@@ -137,6 +137,7 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
     <div>
         <button type="button" id ="btn">計算</button>
+        <button type="button" id ="btn_c">清除</button>
     </div>
 
     <div id="tb1" style="height:auto;width:auto;float:left;text-align:left;">
@@ -150,7 +151,7 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
 
 
-<div style="height:auto;width:auto;float:left;">
+<div style="height:auto;width:500px;float:left;">
    <select id ="ls" ></select>
     <table class="cd">
         <caption>空襲CD</caption>
@@ -180,7 +181,6 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
     <tr>
         <th></th>
         <th></th>
-        <th></th>
 
     </tr>
         <tr>
@@ -208,10 +208,11 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
     </table>
     <button type="button" id="btn1">計算</button>
+    <button type="button" id="btn1_c">清除</button>
     <p id ="label1"></p>
     <p id ="label2"></p>
 </div>
-<div>
+<div style="height:auto;width:auto;float: left  ;">
     <table class="cd" > <!--可畏-->
         <caption>可畏CD計算機</caption>
         <tbody>
@@ -232,16 +233,18 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
     </table>
 
     <button type="button" id = "btn2">計算</button>
-</div>
-<div>
-    <label>
-        <input type="checkbox" name="" id="s_equip" class="checkbox">
-        <span class="btn-box">
+    <button type="button" id="btn2_c">清除</button>
+    <div>
+        <label>
+            <input type="checkbox" name="" id="s_equip" class="checkbox">
+            <span class="btn-box">
       <span class="btn"></span>
     </span>
-        <span class="text">歸航信標</span>
-    </label>
+            <span class="text">歸航信標</span>
+        </label>
+    </div>
 </div>
+
 
 <div id="showTable" style="height:auto;width:auto;float:left;text-align:center;">
 
@@ -314,11 +317,23 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
         ]
     };
     $(function() {
-        $( "#accordion" ).accordion({
-            collapsible: true
-        });
+    var a1=document.getElementById("A1").style;
+    a1.display="none";
+        var a2=document.getElementById("A2").style;
+        a2.display="none";
+        var a3=document.getElementById("A3").style;
+        a3.display="none";
     });
-
+    $('#btn_c').click(function () {
+        $('#tb1').text("");
+    });
+    $('#btn1_c').click(function () {
+        $('#label1').text("");
+        $('#label2').text("");
+    });
+    $('#btn2_c').click(function () {
+        $('#showTable').text("");
+    });
     $('#btn').click(function () {
        $('#tb1').text("");
         var tm=wep_info.wep;
