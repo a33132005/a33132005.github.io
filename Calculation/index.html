@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="cd.ico"/>
     <title>時間管理大師</title>
-    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
     <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
-    <link rel="stylesheet" href="jqueryui/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 </head>
@@ -115,8 +113,17 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
         margin-left: 20px;
     }
 
+    .ds{
 
+        position:absolute;
+        top:900px;
+        left:40px;
+    }
 </style>
+
+
+
+
 <div style="height:auto;width:500px;float:left;">
     <table class="cd">
         <caption>戰艦主砲</caption>
@@ -133,6 +140,10 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
         <tr>
             <td>裝備、貓、科技加成</td>
             <td id="e_reload" contenteditable="true">0</td>
+        </tr>
+        <tr>
+            <td>時間縮短</td>
+            <td id="stime" contenteditable="true">0</td>
         </tr>
 
     </table>
@@ -258,11 +269,29 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 </div>
 
 
-<div id="showTable" style="height:auto;width:auto;float:left;text-align:center;">
+<div id="showTable" style="height: 600px;width:auto;float:left;text-align:center;">
 
 
 </div>
 
+
+<div class="ds">
+
+    <table id="tbrd" class="cd" >
+        <caption>紀錄</caption>
+       <tr>
+
+            <td>一</td>
+            <td id="tmp1" contenteditable="true">0</td>
+           <td>二</td>
+           <td id="tmp2" contenteditable="true">0</td>
+           <td>三</td>
+           <td id="tmp3" contenteditable="true">0</td>
+        </tr>
+    </table>
+
+    <button  onclick="addt()">新增</button>
+</div>
 
 
 
@@ -279,6 +308,11 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
                 "name": "406mm主砲MK6T3",
                 "r": 24.02,
                 "img":"https://patchwiki.biligame.com/images/blhx/5/57/lgbv7uip8s195gledsiqdsh5apey1tw.jpg"
+            },
+            {
+                "name": "雙聯380mmSKC主炮T3",
+                "r": 18.38,
+                "img":"https://patchwiki.biligame.com/images/blhx/9/98/pmnho294oubxk60ue2ziqdz0qtp9bgr.jpg"
             },
             {
                 "name": "三聯裝381mm主炮Model1934T3",
@@ -324,10 +358,18 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
                 "name": "試作型雙聯裝457mm主炮MKAT0",
                 "r": 20.65,
                 "img":"https://patchwiki.biligame.com/images/blhx/f/fd/n5r46jzf8y0f641qckay8465obpyfxv.jpg"
+            },
+            {
+                "name": "三聯裝305mm主炮Model1907T3",
+                "r": 27.40,
+                "img":"https://patchwiki.biligame.com/images/blhx/4/49/gqtuoc06ndmntfce3pxh4j44ybblygj.jpg"
             }
+
+
 
         ]
     };
+    var tm=wep_info.wep;
     $(function() {
     var a1=document.getElementById("A1").style;
     a1.display="none";
@@ -348,8 +390,8 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
     });
     $('#btn').click(function () {
        $('#tb1').text("");
-        var tm=wep_info.wep;
-        var table=$("<table ></table>");
+
+        var table=$("<table class='f_cd' ></table>");
         var thead=$("<thead></thead>");
         var tbody=$("<tbody></tbody>");
         var div=$("<div id='accordion'></div>");
@@ -362,9 +404,11 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
         var  img=document.createElement("img");
         var sk =document.getElementById('sk_equip');
         var  imgdiv=document.createElement("p");
-
+        var st=1-(parseFloat( document.getElementById('stime').innerHTML/100));
+        var count;
 
         for(var i=0;i<tm.length;i++){
+             count=0;
             var h3=$("<h3></h3>");
             var tr=$("<tr></tr>");
             var td=$("<td></td>");
@@ -372,25 +416,22 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
 
             img.src=tm[i].img;
             img.width="30";
-            img.height="35";
+            img.height="28";
             imgdiv.appendChild(img);
+
+
             if(sk.checked ){
-                fcd =(tm[i].r*math.sqrt(200/((a+c)*b+100)))*0.85;
+                fcd =((tm[i].r*math.sqrt(200/((a+c)*b+100)))*0.85)*st;
             }else {
-                fcd =(tm[i].r*math.sqrt(200/((a+c)*b+100)));
+                fcd =((tm[i].r*math.sqrt(200/((a+c)*b+100))))*st;
             }
+
             th=$("<th>"+imgdiv.innerHTML+tm[i].name+"</th>");
-            td=$("<td>"+math.round(fcd,2)+"s/輪"+"</td>");
+            td=$("<td id=t"+i+">"+math.round(fcd,2)+"s/輪"+"</td>");
 
 
             th.appendTo(tr);
-
             td.appendTo(tr);
-
-
-
-
-
 
 
             tr.appendTo(tbody);
@@ -398,10 +439,28 @@ IYjqdPKqKPqPPDQBQQQBBBBBQQQQRQRQQRggPq5jr:                 .:. . :i  75qPPKPPbPb
             thead.appendTo(table);
             table.appendTo(tb1);
         }
-    })
+    });
 
 
 
+
+
+
+    function addt() {
+        var table = document.getElementById("tbrd");
+        var num = document.getElementById("tbrd").rows.length;
+
+        $('#tbrd').append('<tr><td>一</td></td><td contenteditable="true">0</td>' +
+            '<td>二</td></td><td contenteditable="true">0</td>' +
+            '<td>三</td></td><td contenteditable="true">0</td></tr>')
+
+
+
+
+    }
+
+
+    
 </script>
 
 <script type="text/javascript" >
